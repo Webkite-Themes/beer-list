@@ -1,0 +1,112 @@
+$colorVariant:dark;
+$themeName:beer-list-landscape;
+
+@import url("//fonts.googleapis.com/css?family=Bitter:400,700|Roboto+Condensed:400,700");
+
+//CALL UNIVERSALS
+@import '../globals/universals';
+
+/* RESET */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+  @include resetThings;
+  }
+
+/****************************************** BEGIN STYLES */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+  background: $backgroundColor;
+  border: 1px solid $lighterOpacity;
+  @include roundedUp(.625em);
+  @include boxedUp;
+  max-width: 43.750em;
+  margin: 0 auto;
+  padding: $mainGutter;
+  font-family:"Open Sans";
+  font-size: 16px;
+  font: 400 16px/normal "Open Sans";
+  a{color:$linkColor;
+      text-decoration: none; 
+    &:hover{color: $linkHover;}
+    }
+  &.webkite-fade-out img{opacity: .5;}
+  }
+  
+/* TYPOGRAPHY */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+  h1, h2, h3, h4{
+    margin: 0;
+    }
+  h2{
+    @include hyphenGreat;
+    display: inline-block;
+    font: 700 1.15em/1 "Podkova";
+    color: $medOpacity;
+    margin-bottom: $mainGutter/4;
+    }
+  h3{
+    font: 400 normal .875em/1 "Podkova";
+    color: $lightOpacity;
+    margin-bottom: $mainGutter/4;
+    }
+  p, li{
+    color: $lightOpacity;
+    }
+  }
+
+//*******************************************UNIVERSALS
+@include universalStyles;
+  
+/********************************************** BLOCKS */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+  .webkite-block-group {
+    @include boxedUp;
+    margin-left:-$mainGutter;
+    vertical-align: top;
+    text-align: left;
+    position:relative;
+    }
+  .webkite-block{
+    @include boxedUp;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    padding-left: $mainGutter;
+    width:100%;
+    &.webkite-block-thirty {width:30%;}
+    &.webkite-block-forty {width:40%;}
+    &.webkite-block-fifty {width:50%;}
+    &.webkite-block-sixty {width:60%;}
+    &.webkite-block-seventy {width:70%;}
+    }
+  }
+  
+/************************************ LANDSCAPE RESULTS */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+
+  }
+  
+
+/******************************************* NO RESULTS */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}{
+  .webkite-no-results{
+    padding: $mainGutter 0;
+    margin-bottom: $mainGutter;
+    border-bottom:1px solid $lightestOpacity;
+    h2{
+      margin-bottom: $mainGutter;
+      }
+    }
+  }
+  
+/************************************** ELEMENT QUERIES */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}.xs{
+  .webkite-block{
+    width: 100%;
+    padding-right: 0;
+    }
+  }
+  
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}.sm{
+  .webkite-block{
+    width: 100%;
+    }
+  }

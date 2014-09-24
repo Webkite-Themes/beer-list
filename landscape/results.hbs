@@ -1,0 +1,118 @@
+{{log this}}
+
+{{>name}}
+{{>embed}}
+
+{{>header}}
+
+<div class="webkite-results-wrapper">
+  {{#if items.length}}
+    {{#each this.items}}
+      <section class="webkite-result">
+        <div class="webkite-block-group">
+          
+          <div class="webkite-block webkite-result-body-block">
+            {{#facet name="Image URL"}}
+              <div class="webkite-image-wrapper">
+                <img src="{{displayValue}}"/>
+              </div>
+            {{~/facet~}}
+            <div class="webkite-result-body">
+              {{#facet name="Beer Name"}}
+                <h2>{{displayValue}}</h2>
+              {{/facet}}
+              
+              {{#facet name="Type"}}
+                <p class="webkite-beer-block webkite-beer-type">
+                {{#if filterable}}
+                  {{#each values}}
+                    <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                    {{~#unless @last}}, {{/unless}}
+                  {{/each}}
+                {{else}}
+                  {{displayValue}}
+                {{/if}}
+                </p>
+              {{/facet}}
+              
+              <ul class="webkite-beer-block">
+                {{~#facet name="Brewery"~}}
+                  <li>
+                    {{~#if filterable~}}
+                      {{#each values}}<a href="#" class="webkite-add-filter brewery"  data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+                    {{~else~}}
+                      <span class="winery">{{displayValue}}</span>
+                    {{~/if}}
+                  </li>
+                {{~/facet~}}
+                {{~#any (find facets name="City") (find facets name="State") (find facets name="Country")~}}
+                  <li>
+                    {{#facet name="City"}}
+                      <span class="webkite-city" href="#">{{displayValue}}</span>
+                    {{/facet}}
+                    {{~#facet name="State"}}
+                      {{~#if filterable~}}
+                        {{#each values}}<a href="#" class="webkite-add-filter webkite-state" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+                      {{~else~}}
+                        <span class="webkite-state">{{displayValue}}</span>
+                      {{~/if~}}          
+                    {{~/facet}}
+                    {{~#facet name="Country"}}
+                      {{~#if filterable~}}
+                        {{#each values}}<a href="#" class="webkite-add-filter webkite-country" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+                      {{~else~}}
+                        <span class="webkite-country">{{displayValue}}</span>
+                      {{~/if~}}          
+                    {{~/facet~}}    
+                  </li>
+                {{~/any~}}
+                <li><a href="#">website</a></li>
+              </ul>
+              
+              {{#facet name="Description"~}}
+                <p class="webkite-beer-block">{{displayValue}}</p>
+              {{~/facet}}
+              
+              <div class="webkite-beer-block webkite-beer-stats-wrapper">
+                <ul class="webkite-beer-stats">
+                  <li class="webkite-beer-abv"><em>ABV</em> 8.6%</li><!--
+               --><li class="webkite-beer-ibu"><em>IBU</em> 33</li><!--
+               --><li class="webkite-beer-og"><em>OG</em> 20</li><!--
+               --><li class="webkite-beer-fg"><em>FG</em> 4.5</li><!--
+               --><li class="webkite-beer-color"><em>Color</em> Dark Brown with Ruby Highlights</li>
+                </ul>
+              </div>
+              
+              <ul class="webkite-beer-block webkite-beer-details">
+                <li class="webkite-beer-yeast">
+                  <b>Yeast:</b> German 3470
+                </li>
+                <li class="webkite-beer-hops">
+                  <b>Hops:</b> German Perle, Czech Saaz
+                </li>
+                <li class="webkite-beer-malts">
+                  <b>Malts:</b> German Pilsner, Munich, Aromatic, Honey Malt, Crystal 75, Crystal 120, Chocolate, Carafa Spezial I
+                </li>
+                <li class="webkite-beer-other">
+                  <b>Other:</b> Local Ohio Honey, Blueberry Puree
+                </li>
+                <li class="webkite-beer-awards">
+                  <b>Awards:</b> "Most Refreshing Beer in America" - Brewing News Global Warming Open 2010
+                </li>
+              </ul>
+            </div>
+          </div><!--
+          
+       --><div class="webkite-block webkite-result-price-block">
+            prices here
+          </div>
+          
+        </div>
+      </section>
+    {{/each}}
+  {{else}}
+    {{>noresult}}
+  {{/if}}
+</div>
+
+{{>footer}}
