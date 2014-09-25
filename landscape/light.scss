@@ -3,6 +3,11 @@ $themeName:beer-list-landscape;
 
 $primaryBorder: rgba(0,0,0,0.2);
 $secondaryBorder: #f1f1f1;
+$priceColumnWidth: 82px;
+$medImageWidth: 140px;
+$smImageWidth: 110px;
+$xsImageWidth: 200px;
+
 
 @import url("//fonts.googleapis.com/css?family=Bitter:400,700|Roboto+Condensed:400,700");
 
@@ -52,11 +57,14 @@ $secondaryBorder: #f1f1f1;
     line-height:1em;
     font-weight:400;
     font-family: "Bitter", sans-serif;
-    color: $lightOpacity;
+    color: $medOpacity;
     margin-bottom: $mainGutter/4;
     }
   p, li{
-    color: $lightOpacity;
+    color: $medOpacity;
+    }
+  b{
+    font-weight:bold;
     }
   }
 
@@ -86,7 +94,7 @@ $secondaryBorder: #f1f1f1;
     &.webkite-block-seventy {width:70%;}
     }
   .webkite-beer-block{
-    color:$lightOpacity;
+    color:$medOpacity;
     padding:0;
     margin:$mainGutter/2 0 0 0;
     list-style:none;
@@ -103,18 +111,62 @@ $secondaryBorder: #f1f1f1;
     padding:$mainGutter;
     margin-left:-$mainGutter;
     margin-right:-$mainGutter;
+    color:$medOpacity;
     + .webkite-result {
       border-top:1px solid $primaryBorder;
       }
+    &:last-child{
+      border-bottom:1px solid $primaryBorder;
+      margin-bottom:$mainGutter;
+      }
+    > .webkite-block-group{
+      position:relative;
+      &:after{
+        content:'';
+        position:absolute;
+        width:1px;
+        top:0;
+        bottom:0;
+        right:$priceColumnWidth;
+        background:$secondaryBorder;
+        }
+      }
     }
   .webkite-result-body-block{
-    padding-right:102px;
+    padding-right:$priceColumnWidth + $mainGutter;
     width:100%;
     }
+  .webkite-no-price .webkite-result-body-block {padding-right:0;}
   .webkite-result-price-block{
-    width:102px;
-    margin-left:-102px;
+    width:$priceColumnWidth + $mainGutter;
+    margin-left:-$priceColumnWidth - $mainGutter;
+    padding-left: $mainGutter + 3*$mainGutter/4;
     text-align:right;
+    }
+  .webkite-beer-prices{
+    list-style:none;
+    margin:0;
+    padding:8px 0 0;
+    li{
+      display:block;
+      padding:0;
+      margin:0;
+      em{
+        font-family:"Bitter", sans-serif;
+        font-size:18px;
+        font-weight:700;
+        line-height:1em;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        overflow:hidden;
+        display:block;
+        padding:2px 0;
+        margin:-2px 0;
+        }
+      + li{
+        padding-top:$mainGutter/2 + 2px;
+        }
+      }
     }
   .webkite-image-wrapper{
     text-align: right;
@@ -144,6 +196,34 @@ $secondaryBorder: #f1f1f1;
     margin-top:$mainGutter/4;
     }
     
+  .webkite-brewery-details li{
+    display:inline-block;
+    vertical-align:top;
+    + li {
+      &:before{
+        padding-left:$mainGutter/4;
+        padding-right:$mainGutter/4;
+        content:'\2022';
+        color:$lightOpacity;
+        opacity:0.3;
+        font-style:normal;
+        font-size:16px;
+        line-height:14px;
+        position:relative;
+        top:1px;
+        }
+      }
+    }
+  .webkite-brewery-location {
+    color:$medOpacity;
+    &:empty {display:none;}
+    a:after, 
+    span:after {content: ",";}
+    a:last-child:after,
+    span:last-child:after{display:none;}
+    }
+
+    
   .webkite-beer-stats-wrapper{
     overflow:hidden;
     border-top:1px solid $secondaryBorder;
@@ -171,15 +251,18 @@ $secondaryBorder: #f1f1f1;
       display:inline-block;
       white-space:nowrap;
       font-size:24px;
-      line-height:24px;
+      line-height:26px;
+      height:$mainGutter/2 + 38px;
       font-family:'Roboto Condensed', sans-serif; 
-      font-weight:700; 
+      font-weight:700;
+      vertical-align:top;
       em{
         font-weight:normal;
         font-family:'Open Sans', sans-serif;
         font-size:14px;
-        line-height:14px;
-        height:14px;
+        line-height:16px;
+        height:16px;
+        margin-bottom:-4px;
         white-space:nowrap;
         text-overflow:ellipsis;
         display:block;
@@ -188,6 +271,8 @@ $secondaryBorder: #f1f1f1;
     .webkite-beer-color{
       position:relative;
       white-space:normal;
+      height:auto;
+      min-height:$mainGutter/2 + 38px;
       &:before{
         content:'';
         position:absolute;
@@ -230,20 +315,67 @@ $secondaryBorder: #f1f1f1;
   
 /************************************** ELEMENT QUERIES */
 #webkite-results.#{$themeName}.webkite-#{$colorVariant}.xs{
-
+  .webkite-result > .webkite-block-group:after{display:none;}
+  .webkite-result-price-block{display:none;}
+  .webkite-result-body-block{
+    padding-right:0;
+    }
+  .webkite-beer-prices{
+    padding-top:0;
+    margin-top:$mainGutter/4;
+    margin-left:-$mainGutter;
+    li{
+      padding-left:$mainGutter;
+      display:inline-block;
+      width: 33.333%;
+     + li {
+        padding-top:0;
+        }
+      }
+    }
+  .webkite-image-wrapper{
+    width:$xsImageWidth;
+    margin:0 auto $mainGutter/2;
+    display:block;
+    + .webkite-result-body {
+      padding-left:0;
+      }
+    }
   }
   
 #webkite-results.#{$themeName}.webkite-#{$colorVariant}.sm{
-
+  .webkite-image-wrapper{
+    width:$smImageWidth;
+    margin-right:-$smImageWidth;
+    + .webkite-result-body {
+      padding-left:$mainGutter + $smImageWidth;
+      }
+    }
   }
 
 #webkite-results.#{$themeName}.webkite-#{$colorVariant}.md{
   .webkite-image-wrapper{
-    width:140px;
-    margin-right:-140px;
+    width:$medImageWidth;
+    margin-right:-$medImageWidth;
     + .webkite-result-body {
-      padding-left:$mainGutter + 140px;
+      padding-left:$mainGutter + $medImageWidth;
       }
     }
 
+  }
+  
+/*************************** DISPLAY RULES */
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}.xs {
+  .md-only {display:none;}
+  .until-md {display:block;}
+  .xs-only{display:block;}
+  }
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}.sm {
+  .md-only {display:none;}
+  .until-md {display:block;}
+  .xs-only{display:none;}
+  }
+#webkite-results.#{$themeName}.webkite-#{$colorVariant}.md {
+  .until-md {display:none;}
+  .xs-only{display:none;}
   }
