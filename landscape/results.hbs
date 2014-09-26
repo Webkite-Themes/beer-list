@@ -7,134 +7,218 @@
 
 <div class="webkite-results-wrapper">
   {{#if items.length}}
-    {{#each this.items}}
-      <section class="webkite-result">
-        <div class="webkite-block-group">
-          
-          <div class="webkite-block webkite-result-body-block">
-            {{#facet name="Image URL"}}
-              <div class="webkite-image-wrapper">
-                <img src="{{displayValue}}"/>
-              </div>
-            {{~/facet~}}
-            <div class="webkite-result-body">
-              {{#facet name="Beer Name"}}
-                <h2>{{displayValue}}</h2>
-              {{/facet}}
+    {{#each (groupedItems this.items)~}}
+      {{#if @key}}<h1 class="webkite-group-name">{{@key}}</h1>{{/if}}
+        {{#each this~}}
+          <section class="webkite-result{{~#unless (any (find facets name="Price #1") (find facets name="Price #2") (find facets name="Price #3"))}} webkite-no-price{{/unless~}}">
+            <div class="webkite-block-group">
               
-              {{#facet name="Type"}}
-                <p class="webkite-beer-block webkite-beer-type">
-                {{#if filterable}}
-                  {{#each values}}
-                    <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
-                    {{~#unless @last}}, {{/unless}}
-                  {{/each}}
-                {{else}}
-                  {{displayValue}}
-                {{/if}}
-                </p>
-              {{/facet}}
-              
-              <ul class="webkite-block-group webkite-beer-prices xs-only">
-                <li class="webkite-block">
-                  <em>$66.00</em>
-                  <a href="#" class="webkite-apply-sort" data-sort="">16oz draft</a>
-                </li><li class="webkite-block">
-                  <em>$6.00</em>
-                  <a href="#" class="webkite-apply-sort" data-sort="">24oz draft</a>
-                </li><li class="webkite-block">
-                  <em>$12.99</em>
-                  <a href="#" class="webkite-apply-sort" data-sort="">Growler</a>
-                </li>
-              </ul>
-              
-              <ul class="webkite-beer-block webkite-brewery-details">
-                {{~#facet name="Brewery"~}}
-                  <li>
-                    {{~#if filterable~}}
-                      {{#each values}}<a href="#" class="webkite-add-filter brewery"  data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
-                    {{~else~}}
-                      <span class="winery">{{displayValue}}</span>
-                    {{~/if}}
-                  </li>
+              <div class="webkite-block webkite-result-body-block">
+                {{#facet name="Image URL"}}
+                  <div class="webkite-image-wrapper">
+                    <img src="{{displayValue}}"/>
+                  </div>
                 {{~/facet~}}
-                {{~#any (find facets name="City") (find facets name="State") (find facets name="Country")~}}
-                  <li class="webkite-brewery-location">
-                    {{~#facet name="City"}}
-                      <span class="webkite-city" href="#">{{displayValue}}</span>
-                    {{/facet}}
-                    {{~#facet name="State"}}
-                      {{~#if filterable~}}
-                        {{#each values}}<a href="#" class="webkite-add-filter webkite-state" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
-                      {{~else~}}
-                        <span class="webkite-state">{{displayValue}}</span>
-                      {{~/if~}}          
-                    {{/facet}}
-                    {{~#facet name="Country"}}
-                      {{~#if filterable~}}
-                        {{#each values}}<a href="#" class="webkite-add-filter webkite-country" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>{{#unless @last}}, {{/unless}}{{/each}}
-                      {{~else~}}
-                        <span class="webkite-country">{{displayValue}}</span>
-                      {{~/if~}}          
-                    {{/facet~}}    
-                  </li>
-                {{~/any~}}
-                <li><a href="#">website</a></li>
-              </ul>
-              
-              {{#facet name="Description"~}}
-                <p class="webkite-beer-block">{{displayValue}}</p>
-              {{~/facet}}
-              
-              <div class="webkite-beer-block webkite-beer-stats-wrapper">
-                <ul class="webkite-beer-stats">
-                  <li class="webkite-beer-abv"><em>ABV</em> 8.6%</li><!--
-               --><li class="webkite-beer-ibu"><em>IBU</em> 33</li><!--
-               --><li class="webkite-beer-og"><em>OG</em> 20</li><!--
-               --><li class="webkite-beer-fg"><em>FG</em> 4.5</li><!--
-               --><li class="webkite-beer-color"><em>Color</em> Dark Brown with Ruby Highlights</li>
-                </ul>
+                <div class="webkite-result-body">
+                  {{#facet name="Beer Name"}}
+                    <h2>{{displayValue}}</h2>
+                  {{/facet}}
+                  
+                  {{#facet name="Type"}}
+                    <p class="webkite-beer-block webkite-beer-type">
+                    {{#if filterable}}
+                      {{#each values}}
+                        <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                        {{~#unless @last}}, {{/unless}}
+                      {{/each}}
+                    {{else}}
+                      {{displayValue}}
+                    {{/if}}
+                    </p>
+                  {{/facet}}
+                  
+                  {{#any (find facets name="Price #1") (find facets name="Price #2") (find facets name="Price #3")}}
+                    <ul class="webkite-block-group webkite-beer-prices xs-only">
+                      {{#if (find facets name="Price #1")~}}
+                        <li class="webkite-block">
+                          {{#facet name="Price #1"}}
+                            <em>{{displayValue}}</em>
+                          {{/facet}}
+                          {{#if (find facets name="Availability #1")}}
+                            {{#if (find facets name="Price #1" sortable=true)}}
+                              <a href="#" class="webkite-apply-sort" data-sort="Price #1">{{#facet name="Availability #1"}}{{displayValue}}{{/facet}}</a>
+                            {{else}}
+                              {{#facet name="Availability #1"}}{{displayValue}}{{/facet}}
+                            {{/if}}
+                          {{/if}}
+                        </li>
+                      {{~/if~}}
+                      {{#if (find facets name="Price #2")~}}
+                        <li class="webkite-block">
+                          {{#facet name="Price #2"}}
+                            <em>{{displayValue}}</em>
+                          {{/facet}}
+                          {{#facet name="Availability #2"}}{{displayValue}}{{/facet}}
+                        </li>
+                      {{~/if~}}
+                      {{#if (find facets name="Price #3")~}}
+                        <li class="webkite-block">
+                          {{#facet name="Price #3"}}
+                            <em>{{displayValue}}</em>
+                          {{/facet}}
+                          {{#facet name="Availability #3"}}{{displayValue}}{{/facet}}
+                        </li>
+                      {{~/if~}}
+                    </ul>
+                  {{/any}}
+                  
+                  {{#any (find facets name="Brewery") (find facets name="City") (find facets name="State") (find facets name="Country") (find facets name="Website")}}
+                    <ul class="webkite-beer-block webkite-brewery-details">
+                      {{~#facet name="Brewery"~}}
+                        <li>
+                          {{~#if filterable~}}
+                            {{#each values}}
+                              <a href="#" class="webkite-add-filter webkite-brewery"  data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                              {{~#unless @last}}, {{/unless}}
+                            {{/each}}
+                          {{~else~}}
+                            <span class="webkite-brewery">{{displayValue}}</span>
+                          {{~/if}}
+                        </li>
+                      {{~/facet~}}
+                      {{~#any (find facets name="City") (find facets name="State") (find facets name="Country")~}}
+                        <li class="webkite-brewery-location">
+                          {{~#facet name="City"~}}
+                            <span class="webkite-city" href="#">{{displayValue}}</span>
+                            {{~#any (find ../facets name="State") (find ../facets name="Country")}}, {{/any}}
+                          {{/facet}}
+                          {{~#facet name="State"~}}
+                            {{~#if filterable~}}
+                              {{#each values~}}
+                                <a href="#" class="webkite-add-filter webkite-state" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                {{~#unless @last}}, {{/unless}}
+                              {{~/each}}
+                            {{~else~}}
+                              <span class="webkite-state">{{displayValue}}</span>
+                            {{~/if~}}          
+                            {{~#if (find ../facets name="Country")}}, {{/if}}
+                          {{/facet}}
+                          {{~#facet name="Country"~}}
+                            {{~#if filterable~}}
+                              {{#each values~}}
+                                <a href="#" class="webkite-add-filter webkite-country" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                {{~#unless @last}}, {{/unless}}
+                              {{~/each}}
+                            {{~else~}}
+                              <span class="webkite-country">{{displayValue}}</span>
+                            {{~/if~}}          
+                          {{/facet~}}    
+                        </li>
+                      {{~/any~}}
+                      {{~#facet name="Website"~}}
+                        <li><a href="{{displayValue}}" target="_blank">{{downcase displayName}}</a></li>
+                      {{~/facet~}}
+                    </ul>
+                  {{/any}}
+                  
+                  {{#facet name="Description"~}}
+                    <p class="webkite-beer-block">{{displayValue}}</p>
+                  {{~/facet}}
+                  
+                  {{#any (find facets name="ABV") (find facets name="IBU") (find facets name="OG") (find facets name="FG") (find facets name="Color")}}
+                    <div class="webkite-beer-block webkite-beer-stats-wrapper">
+                      <ul class="webkite-beer-stats">
+                        {{~#facet name="ABV"~}}
+                          <li class="webkite-beer-abv"><em>{{displayName}}</em> {{displayValue}}</li>
+                        {{~/facet~}}
+                        {{~#facet name="IBU"~}}
+                          <li class="webkite-beer-ibu"><em>{{displayName}}</em> {{displayValue}}</li>
+                        {{~/facet~}}
+                        {{~#facet name="OG"~}}
+                          <li class="webkite-beer-og"><em>{{displayName}}</em> {{displayValue}}</li>
+                        {{~/facet~}}
+                        {{~#facet name="FG"~}}
+                          <li class="webkite-beer-fg"><em>{{displayName}}</em> {{displayValue}}</li>
+                        {{~/facet~}}
+                        {{~#facet name="Color"~}}
+                          <li class="webkite-beer-color"><em>{{displayName}}</em> {{displayValue}}</li>
+                        {{~/facet~}}
+                      </ul>
+                    </div>
+                  {{/any}}
+                  
+                  {{#any (find facets name="Yeast") (find facets name="Hops") (find facets name="Malt") (find facets name="Other") (find facets name="Awards")}}
+                    <ul class="webkite-beer-block webkite-beer-details">
+                      {{#facet name="Yeast"}}
+                        <li class="webkite-beer-yeast">
+                          <b>{{displayName}}:</b> {{displayValue}}
+                        </li>
+                      {{/facet}}
+                      {{#facet name="Hops"}}
+                        <li class="webkite-beer-hops">
+                          <b>{{displayName}}:</b> {{displayValue}}
+                        </li>
+                      {{/facet}}
+                      {{#facet name="Malt"}}
+                        <li class="webkite-beer-malts">
+                          <b>{{displayName}}:</b> {{displayValue}}
+                        </li>
+                      {{/facet}}
+                      {{#facet name="Other"}}
+                        <li class="webkite-beer-other">
+                          <b>{{displayName}}:</b> {{displayValue}}
+                        </li>
+                      {{/facet}}
+                      {{#facet name="Awards"}}
+                        <li class="webkite-beer-awards">
+                          <b>{{displayName}}:</b> {{displayValue}}
+                        </li>
+                      {{/facet}}
+                    </ul>
+                  {{/any}}
+                </div>
               </div>
               
-              <ul class="webkite-beer-block webkite-beer-details">
-                <li class="webkite-beer-yeast">
-                  <b>Yeast:</b> German 3470
-                </li>
-                <li class="webkite-beer-hops">
-                  <b>Hops:</b> German Perle, Czech Saaz
-                </li>
-                <li class="webkite-beer-malts">
-                  <b>Malts:</b> German Pilsner, Munich, Aromatic, Honey Malt, Crystal 75, Crystal 120, Chocolate, Carafa Spezial I
-                </li>
-                <li class="webkite-beer-other">
-                  <b>Other:</b> Local Ohio Honey, Blueberry Puree
-                </li>
-                <li class="webkite-beer-awards">
-                  <b>Awards:</b> "Most Refreshing Beer in America" - Brewing News Global Warming Open 2010
-                </li>
-              </ul>
+              {{~#any (find facets name="Price #1") (find facets name="Price #2") (find facets name="Price #3")~}}
+                <div class="webkite-block webkite-result-price-block">
+                  <ul class="webkite-beer-prices">
+                    {{#if (find facets name="Price #1")~}}
+                      <li>
+                        {{#facet name="Price #1"}}
+                          <em>{{displayValue}}</em>
+                        {{/facet}}
+                        {{#if (find facets name="Availability #1")}}
+                          {{#if (find facets name="Price #1" sortable=true)}}
+                            <a href="#" class="webkite-apply-sort" data-sort="Price #1">{{#facet name="Availability #1"}}{{displayValue}}{{/facet}}</a>
+                          {{else}}
+                            {{#facet name="Availability #1"}}{{displayValue}}{{/facet}}
+                          {{/if}}
+                        {{/if}}
+                      </li>
+                    {{~/if~}}
+                    {{#if (find facets name="Price #2")~}}
+                      <li>
+                        {{#facet name="Price #2"}}
+                          <em>{{displayValue}}</em>
+                        {{/facet}}
+                        {{#facet name="Availability #2"}}{{displayValue}}{{/facet}}
+                      </li>
+                    {{~/if~}}
+                    {{#if (find facets name="Price #3")~}}
+                      <li>
+                        {{#facet name="Price #3"}}
+                          <em>{{displayValue}}</em>
+                        {{/facet}}
+                        {{#facet name="Availability #3"}}{{displayValue}}{{/facet}}
+                      </li>
+                    {{~/if~}}
+                  </ul>
+                </div>
+              {{~/any~}}
+              
             </div>
-          </div><!--
-          
-       --><div class="webkite-block webkite-result-price-block">
-            <ul class="webkite-beer-prices">
-              <li>
-                <em>$66.00</em>
-                <a href="#" class="webkite-apply-sort" data-sort="">16oz draft</a>
-              </li>
-              <li>
-                <em>$6.00</em>
-                <a href="#" class="webkite-apply-sort" data-sort="">24oz draft</a>
-              </li>
-              <li>
-                <em>$12.99</em>
-                <a href="#" class="webkite-apply-sort" data-sort="">Growler</a>
-              </li>
-            </ul>
-          </div>
-          
-        </div>
-      </section>
+          </section>
+        {{/each}}
     {{/each}}
   {{else}}
     {{>noresult}}
