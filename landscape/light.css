@@ -105,6 +105,11 @@
 #webkite-results.beer-list-landscape.webkite-light b {
   font-weight: bold; }
 
+/******************************************** GENERAL */
+#webkite-results.beer-list-landscape.webkite-light {
+  text-align: left;
+  direction: ltr; }
+
 /******************************************** NAVIGATIONALS */
 #webkite-results.beer-list-landscape.webkite-light .webkite-results-header, #webkite-results.beer-list-landscape.webkite-light .webkite-results-footer {
   text-align: justify;
