@@ -172,19 +172,17 @@ $xsImageWidth: 200px;
         display:block;
         padding:2px 0;
         margin:-2px 0;
-        + a {
-          margin-top:-1px;
-          }
         }
       a {
         display:inline-block;
         overflow:hidden;
         text-overflow:ellipsis;
         padding:2px 0;
-        margin:-2px 0;
+        margin:-1px 0;
+        line-height:1em;
         }
       + li{
-        padding-top:$mainGutter/2 + 2px;
+        padding-top:$mainGutter/2;
         }
       }
     }

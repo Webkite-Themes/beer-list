@@ -705,16 +705,15 @@
       display: block;
       padding: 2px 0;
       margin: -2px 0; }
-      #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li em + a {
-        margin-top: -1px; }
     #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li a {
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       padding: 2px 0;
-      margin: -2px 0; }
+      margin: -1px 0;
+      line-height: 1em; }
     #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li + li {
-      padding-top: 12px; }
+      padding-top: 10px; }
 #webkite-results.beer-list-landscape.webkite-dark .webkite-image-wrapper {
   text-align: right;
   display: inline-block;
