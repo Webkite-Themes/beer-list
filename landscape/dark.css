@@ -711,7 +711,8 @@
       text-overflow: ellipsis;
       padding: 2px 0;
       margin: -1px 0;
-      line-height: 1em; }
+      line-height: 1em;
+      max-width: 100%; }
     #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li + li {
       padding-top: 10px; }
 #webkite-results.beer-list-landscape.webkite-dark .webkite-image-wrapper {

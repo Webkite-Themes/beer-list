@@ -42,31 +42,52 @@
                       {{#if (find facets name="Price #1")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #1"}}
-                            <em>{{displayValue}}</em>
+                            <em title="{{displayValue}}">{{displayValue}}</em>
                           {{/facet}}
-                          {{#if (find facets name="Availability #1")}}
-                            {{#if (find facets name="Price #1" sortable=true)}}
-                              <a href="#" class="webkite-apply-sort" data-sort="Price #1">{{#facet name="Availability #1"}}{{displayValue}}{{/facet}}</a>
-                            {{else}}
-                              {{#facet name="Availability #1"}}{{displayValue}}{{/facet}}
-                            {{/if}}
-                          {{/if}}
+                          {{~#facet name="Availability #1"~}}
+                            {{~#if filterable~}}
+                              {{#each values~}}
+                                <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                {{~#unless @last}}, {{/unless}}
+                              {{~/each}}
+                            {{~else~}}
+                              {{displayValue}}
+                            {{~/if~}}          
+                          {{/facet~}}    
                         </li>
                       {{~/if~}}
                       {{#if (find facets name="Price #2")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #2"}}
-                            <em>{{displayValue}}</em>
+                            <em title="{{displayValue}}">{{displayValue}}</em>
                           {{/facet}}
-                          {{#facet name="Availability #2"}}{{displayValue}}{{/facet}}
+                          {{~#facet name="Availability #2"~}}
+                            {{~#if filterable~}}
+                              {{#each values~}}
+                                <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                {{~#unless @last}}, {{/unless}}
+                              {{~/each}}
+                            {{~else~}}
+                              {{displayValue}}
+                            {{~/if~}}          
+                          {{/facet~}}    
                         </li>
                       {{~/if~}}
                       {{#if (find facets name="Price #3")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #3"}}
-                            <em>{{displayValue}}</em>
+                            <em title="{{displayValue}}">{{displayValue}}</em>
                           {{/facet}}
-                          {{#facet name="Availability #3"}}{{displayValue}}{{/facet}}
+                          {{~#facet name="Availability #3"~}}
+                            {{~#if filterable~}}
+                              {{#each values~}}
+                                <a href="#" class="webkite-add-filter" data-facet="{{../name}}" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                {{~#unless @last}}, {{/unless}}
+                              {{~/each}}
+                            {{~else~}}
+                              {{displayValue}}
+                            {{~/if~}}          
+                          {{/facet~}}    
                         </li>
                       {{~/if~}}
                     </ul>
@@ -185,7 +206,7 @@
                     {{#if (find facets name="Price #1")~}}
                       <li>
                         {{#facet name="Price #1"}}
-                          <em>{{displayValue}}</em>
+                          <em title="{{displayValue}}">{{displayValue}}</em>
                         {{/facet}}
                         {{~#facet name="Availability #1"~}}
                           {{~#if filterable~}}
@@ -202,7 +223,7 @@
                     {{#if (find facets name="Price #2")~}}
                       <li>
                         {{#facet name="Price #2"}}
-                          <em>{{displayValue}}</em>
+                          <em title="{{displayValue}}">{{displayValue}}</em>
                         {{/facet}}
                         {{~#facet name="Availability #2"~}}
                           {{~#if filterable~}}
@@ -219,7 +240,7 @@
                     {{#if (find facets name="Price #3")~}}
                       <li>
                         {{#facet name="Price #3"}}
-                          <em>{{displayValue}}</em>
+                          <em title="{{displayValue}}">{{displayValue}}</em>
                         {{/facet}}
                         {{~#facet name="Availability #3"~}}
                           {{~#if filterable~}}
