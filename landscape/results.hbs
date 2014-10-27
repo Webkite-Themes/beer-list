@@ -42,12 +42,12 @@
                       {{#if (find facets name="Price #1")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #1"}}
-                            <em title="{{displayValue}}">{{displayValue}}</em>
+                            <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                           {{/facet}}
                           {{~#if (find facets name="Availability" filterable=true)}}
                             {{#facet name="Availability #1"}}
                               {{#each values~}}
-                                <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                               {{~/each}}
                             {{/facet}}
                           {{~else~}}
@@ -60,12 +60,12 @@
                       {{#if (find facets name="Price #2")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #2"}}
-                            <em title="{{displayValue}}">{{displayValue}}</em>
+                            <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                           {{/facet}}
                           {{~#if (find facets name="Availability" filterable=true)}}
                             {{#facet name="Availability #2"}}
                               {{#each values~}}
-                                <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                               {{~/each}}
                             {{/facet}}
                           {{~else~}}
@@ -78,12 +78,12 @@
                       {{#if (find facets name="Price #3")~}}
                         <li class="webkite-block">
                           {{#facet name="Price #3"}}
-                            <em title="{{displayValue}}">{{displayValue}}</em>
+                            <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                           {{/facet}}
                           {{~#if (find facets name="Availability" filterable=true)}}
                             {{#facet name="Availability #3"}}
                               {{#each values~}}
-                                <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                                <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                               {{~/each}}
                             {{/facet}}
                           {{~else~}}
@@ -153,19 +153,34 @@
                     <div class="webkite-beer-block webkite-beer-stats-wrapper">
                       <ul class="webkite-beer-stats">
                         {{~#facet name="ABV"~}}
-                          <li class="webkite-beer-abv"><em>{{displayName}}</em> {{displayValue}}</li>
+                          <li class="webkite-beer-abv">
+                            <em class="webkite-tooltip" title="{{displayName}}">{{displayName}}</em> 
+                            <span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span>
+                          </li>
                         {{~/facet~}}
                         {{~#facet name="IBU"~}}
-                          <li class="webkite-beer-ibu"><em>{{displayName}}</em> {{displayValue}}</li>
+                          <li class="webkite-beer-ibu">
+                            <em class="webkite-tooltip" title="{{displayName}}">{{displayName}}</em> 
+                            <span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span>
+                          </li>
                         {{~/facet~}}
                         {{~#facet name="OG"~}}
-                          <li class="webkite-beer-og"><em>{{displayName}}</em> {{displayValue}}</li>
+                          <li class="webkite-beer-og">
+                            <em class="webkite-tooltip" title="{{displayName}}">{{displayName}}</em> 
+                            <span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span>
+                          </li>
                         {{~/facet~}}
                         {{~#facet name="FG"~}}
-                          <li class="webkite-beer-fg"><em>{{displayName}}</em> {{displayValue}}</li>
+                          <li class="webkite-beer-fg">
+                            <em class="webkite-tooltip" title="{{displayName}}">{{displayName}}</em> 
+                            <span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span>
+                          </li>
                         {{~/facet~}}
                         {{~#facet name="Color"~}}
-                          <li class="webkite-beer-color"><em>{{displayName}}</em> {{displayValue}}</li>
+                          <li class="webkite-beer-color">
+                            <em class="webkite-tooltip" title="{{displayName}}">{{displayName}}</em> 
+                            <span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span>
+                          </li>
                         {{~/facet~}}
                       </ul>
                     </div>
@@ -209,12 +224,12 @@
                     {{#if (find facets name="Price #1")~}}
                       <li>
                         {{#facet name="Price #1"}}
-                          <em title="{{displayValue}}">{{displayValue}}</em>
+                          <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                         {{/facet}}
                         {{~#if (find facets name="Availability" filterable=true)}}
                           {{#facet name="Availability #1"}}
                             {{#each values~}}
-                              <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                              <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                             {{~/each}}
                           {{/facet}}
                         {{~else~}}
@@ -227,12 +242,12 @@
                     {{#if (find facets name="Price #2")~}}
                       <li>
                         {{#facet name="Price #2"}}
-                          <em title="{{displayValue}}">{{displayValue}}</em>
+                          <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                         {{/facet}}
                         {{~#if (find facets name="Availability" filterable=true)}}
                           {{#facet name="Availability #2"}}
                             {{#each values~}}
-                              <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                              <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                             {{~/each}}
                           {{/facet}}
                         {{~else~}}
@@ -245,12 +260,12 @@
                     {{#if (find facets name="Price #3")~}}
                       <li>
                         {{#facet name="Price #3"}}
-                          <em title="{{displayValue}}">{{displayValue}}</em>
+                          <em><span class="webkite-tooltip" title="{{displayValue}}">{{displayValue}}</span></em>
                         {{/facet}}
                         {{~#if (find facets name="Availability" filterable=true)}}
                           {{#facet name="Availability #3"}}
                             {{#each values~}}
-                              <a href="#" class="webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}">{{this}}</a>
+                              <a href="#" class="webkite-tooltip webkite-add-filter" data-facet="Availability" data-operator="is" data-value="{{this}}" title="{{this}}">{{this}}</a>
                             {{~/each}}
                           {{/facet}}
                         {{~else~}}

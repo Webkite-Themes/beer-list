@@ -165,19 +165,23 @@ $xsImageWidth: 200px;
         font-size:18px;
         font-weight:700;
         line-height:1em;
-        white-space:nowrap;
-        text-overflow:ellipsis;
-        overflow:hidden;
         display:block;
-        padding:2px 0;
-        margin:-2px 0;
+        span{
+          display:inline-block;
+          max-width:100%;
+          white-space:nowrap;
+          text-overflow:ellipsis;
+          overflow:hidden;
+          padding:0 0 4px;
+          margin:0 0 -4px;
+          }
         }
       a {
         display:inline-block;
         overflow:hidden;
         text-overflow:ellipsis;
-        padding:2px 0;
-        margin:-1px 0;
+        padding:0 0 2px;
+        margin:0 0 -2px;
         line-height:1em;
         max-width:100%;
         }
@@ -280,12 +284,23 @@ $xsImageWidth: 200px;
         white-space:nowrap;
         text-overflow:ellipsis;
         display:block;
-        }    
+        }
+      span{
+        display:block;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        padding:0 0 4px;
+        margin:0 0 -4px;
+        } 
       }
     .webkite-beer-color{
       white-space:normal;
       height:auto;
       min-height:$mainGutter/2 + 38px;
+      span{
+        white-space:normal;
+        }
       }
     }
   

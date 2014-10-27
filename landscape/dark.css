@@ -107,6 +107,7 @@
 
 /******************************************** GENERAL */
 #webkite-results.beer-list-landscape.webkite-dark {
+  position: relative;
   text-align: left;
   direction: ltr; }
 
@@ -227,7 +228,7 @@
   /* filters */
   /* tokens */
   /* clear everything */ }
-  #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-toggle, #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-toggle {
+  #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-sort-menu-trigger, #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-filter-menu-trigger {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -246,11 +247,11 @@
     font: 700 14px/1.3 'Open Sans', 'Arial', sans-serif;
     text-align: left;
     margin: 0;
-    padding: 3px 18px 3px 0;
+    padding: 0;
     height: 28px;
     width: 80px;
     white-space: nowrap; }
-    #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-toggle > span, #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-toggle > span {
+    #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-sort-menu-trigger > span, #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-filter-menu-trigger > span {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
@@ -258,12 +259,17 @@
       display: block;
       overflow: hidden;
       text-overflow: ellipsis;
-      padding-left: 8px;
-      width: 100%; }
+      padding: 4px 18px 4px 8px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0; }
   #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area {
     position: relative;
-    z-index: 3; }
-  #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-toggle i {
+    z-index: 5; }
+  #webkite-results.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-sort-menu-trigger i {
     background: url("angle-dark.png") center center no-repeat;
     height: 10px;
     pointer-events: none;
@@ -288,14 +294,14 @@
     left: 0;
     top: 0;
     vertical-align: top;
-    z-index: 2; }
-  #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-toggle {
+    z-index: 4; }
+  #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-filter-menu-trigger {
     -webkit-border-radius: 3px 0 0 3px;
     -moz-border-radius: 3px 0 0 3px;
     -ms-border-radius: 3px 0 0 3px;
     -o-border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px; }
-  #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-toggle i {
+  #webkite-results.beer-list-landscape.webkite-dark .webkite-primary-filter-menu > .webkite-filter-menu-trigger i {
     background: url("plus-dark.png") no-repeat;
     height: 12px;
     width: 12px;
@@ -508,6 +514,62 @@
     #webkite-results.beer-list-landscape.webkite-dark .all-current-filters .all-filters-wrapper [class^="filter-group"] {
       display: inline; }
 
+/******************************************* TOOLTIPS */
+#webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip {
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.2em;
+  position: absolute;
+  z-index: 9999; }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip .webkite-tooltip-content {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    background: #595959;
+    padding: 4px 5px;
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10; }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip:after, #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip:before {
+    width: 10px;
+    height: 10px;
+    background: #595959;
+    border: 1px solid transparent;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    margin-left: -5px;
+    z-index: 11;
+    background-clip: padding-box; }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip:after {
+    z-index: 9;
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2); }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-top:after, #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-top:before {
+    top: -5px;
+    bottom: auto; }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-left:after, #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-left:before {
+    left: 10px;
+    margin: 0; }
+  #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-right:after, #webkite-results.beer-list-landscape.webkite-dark #webkite-tooltip.webkite-tooltip-right:before {
+    right: 10px;
+    left: auto;
+    margin: 0; }
+
 /********************************************* PAGINATION */
 #webkite-results.beer-list-landscape.webkite-dark {
   /* page input */
@@ -580,7 +642,7 @@
   padding: 0;
   margin: 0;
   text-align: center; }
-#webkite-results.xs.beer-list-landscape.webkite-dark .webkite-filter-area, #webkite-results.xs.beer-list-landscape.webkite-dark .webkite-sort-area, #webkite-results.xs.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-toggle {
+#webkite-results.xs.beer-list-landscape.webkite-dark .webkite-filter-area, #webkite-results.xs.beer-list-landscape.webkite-dark .webkite-sort-area, #webkite-results.xs.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-sort-menu-trigger {
   width: 100%; }
 #webkite-results.xs.beer-list-landscape.webkite-dark .sort-menu {
   width: 95%; }
@@ -598,7 +660,7 @@
   display: block;
   text-align: center; }
 
-#webkite-results.sm.beer-list-landscape.webkite-dark .webkite-filter-area, #webkite-results.sm.beer-list-landscape.webkite-dark .webkite-sort-area, #webkite-results.sm.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-toggle {
+#webkite-results.sm.beer-list-landscape.webkite-dark .webkite-filter-area, #webkite-results.sm.beer-list-landscape.webkite-dark .webkite-sort-area, #webkite-results.sm.beer-list-landscape.webkite-dark .webkite-sort-area > .webkite-sort-menu-trigger {
   width: 100%; }
 #webkite-results.sm.beer-list-landscape.webkite-dark .sort-menu {
   width: 95%; }
@@ -699,18 +761,21 @@
       font-size: 18px;
       font-weight: 700;
       line-height: 1em;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: block;
-      padding: 2px 0;
-      margin: -2px 0; }
+      display: block; }
+      #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li em span {
+        display: inline-block;
+        max-width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 0 0 4px;
+        margin: 0 0 -4px; }
     #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li a {
       display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
-      padding: 2px 0;
-      margin: -1px 0;
+      padding: 0 0 2px;
+      margin: 0 0 -2px;
       line-height: 1em;
       max-width: 100%; }
     #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-prices li + li {
@@ -800,10 +865,19 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       display: block; }
+    #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-stats li span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 0 4px;
+      margin: 0 0 -4px; }
   #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-stats .webkite-beer-color {
     white-space: normal;
     height: auto;
     min-height: 48px; }
+    #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-stats .webkite-beer-color span {
+      white-space: normal; }
 #webkite-results.beer-list-landscape.webkite-dark .webkite-beer-details {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
