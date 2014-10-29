@@ -114,7 +114,10 @@
 /******************************************** NAVIGATIONALS */
 #webkite-results.beer-list-landscape.webkite-light .webkite-results-header, #webkite-results.beer-list-landscape.webkite-light .webkite-results-footer {
   text-align: justify;
-  position: relative; }
+  position: relative;
+  float: none;
+  width: auto;
+  display: block; }
   #webkite-results.beer-list-landscape.webkite-light .webkite-results-header .webkite-sort-area, #webkite-results.beer-list-landscape.webkite-light .webkite-results-header .webkite-filter-area, #webkite-results.beer-list-landscape.webkite-light .webkite-results-footer .webkite-sort-area, #webkite-results.beer-list-landscape.webkite-light .webkite-results-footer .webkite-filter-area {
     display: inline-block;
     vertical-align: top; }
